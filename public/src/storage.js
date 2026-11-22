@@ -58,6 +58,11 @@ export function sanitizeProgress(value) {
   };
 }
 
+/**
+ * Sanitizes and bounds completed daily history entries.
+ * @param {unknown} value
+ * @returns {import("./constants.js").Progress["history"]}
+ */
 function sanitizeHistory(value) {
   if (!Array.isArray(value)) return [];
   return value
@@ -70,6 +75,11 @@ function sanitizeHistory(value) {
     }));
 }
 
+/**
+ * Keeps unique, well-formed question identifiers from saved history.
+ * @param {unknown} value
+ * @returns {string[]}
+ */
 function sanitizeQuestionIds(value) {
   if (!Array.isArray(value)) return [];
   return [
@@ -77,6 +87,11 @@ function sanitizeQuestionIds(value) {
   ].slice(0, QUESTIONS_PER_DAY);
 }
 
+/**
+ * Sanitizes the bounded map of scheduled reviews.
+ * @param {unknown} value
+ * @returns {import("./constants.js").Progress["reviews"]}
+ */
 function sanitizeReviews(value) {
   const reviews = {};
   if (!value || typeof value !== "object" || Array.isArray(value)) return reviews;
@@ -88,6 +103,11 @@ function sanitizeReviews(value) {
   return reviews;
 }
 
+/**
+ * Keeps unique, well-formed badge identifiers.
+ * @param {unknown} value
+ * @returns {string[]}
+ */
 function sanitizeBadges(value) {
   if (!Array.isArray(value)) return [];
   return [

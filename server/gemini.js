@@ -1,7 +1,10 @@
-const MODEL = "gemini-2.0-flash";
-const TIMEOUT_MS = 8_000;
-const MAX_OUTPUT_TOKENS = 180;
-const MAX_EXPLANATION_CHARS = 1_000;
+import {
+  GEMINI_MAX_OUTPUT_TOKENS,
+  GEMINI_MODEL,
+  GEMINI_TEMPERATURE,
+  GEMINI_TIMEOUT_MS,
+  MAX_EXPLANATION_CHARS,
+} from "./constants.js";
 
 /**
  * Requests a short, guarded explanation using the fixed Gemini model.
@@ -10,7 +13,7 @@ const MAX_EXPLANATION_CHARS = 1_000;
  */
 export async function explainWithGemini({ question, key, fetchImpl = fetch }) {
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), TIMEOUT_MS);
+  const timeout = setTimeout(controller.abort.bind(controller), GEMINI_TIMEOUT_MS);
   try {
     const response = await requestGemini(question, key, controller.signal, fetchImpl);
     return await parseGeminiResponse(response);
@@ -19,11 +22,22 @@ export async function explainWithGemini({ question, key, fetchImpl = fetch }) {
   }
 }
 
+/**
+ * Sends the guarded prompt to the configured Gemini endpoint.
+ * @param {import("../public/src/constants.js").Question} question
+ * @param {string} key
+ * @param {AbortSignal} signal
+ * @param {typeof fetch} fetchImpl
+ * @returns {Promise<Response>}
+ */
 async function requestGemini(question, key, signal, fetchImpl) {
-  const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`;
+  const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
   const body = JSON.stringify({
     contents: [{ parts: [{ text: buildPrompt(question) }] }],
-    generationConfig: { maxOutputTokens: MAX_OUTPUT_TOKENS, temperature: 0.3 },
+    generationConfig: {
+      maxOutputTokens: GEMINI_MAX_OUTPUT_TOKENS,
+      temperature: GEMINI_TEMPERATURE,
+    },
   });
   return fetchImpl(endpoint, {
     method: "POST",
@@ -33,6 +47,11 @@ async function requestGemini(question, key, signal, fetchImpl) {
   });
 }
 
+/**
+ * Validates and trims a Gemini response without returning upstream details.
+ * @param {Response} response
+ * @returns {Promise<string>}
+ */
 async function parseGeminiResponse(response) {
   if (!response.ok) throw new Error("Gemini request failed");
   const payload = await response.json();

@@ -5,6 +5,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { request as httpRequest } from "node:http";
 import { createServer } from "../server.js";
+import { getClientIp } from "../server/client-ip.js";
 import { loadEnv } from "../server/env.js";
 
 /**
@@ -92,6 +93,9 @@ function assertSecurityHeaders(response) {
   assert.equal(response.headers["x-content-type-options"], "nosniff");
   assert.equal(response.headers["referrer-policy"], "no-referrer");
   assert.equal(response.headers["cache-control"], "no-store");
+  assert.equal(response.headers["permissions-policy"], "camera=(), microphone=(), geolocation=()");
+  assert.equal(response.headers["cross-origin-opener-policy"], "same-origin");
+  assert.equal(response.headers["cross-origin-resource-policy"], "same-origin");
 }
 
 function explainRequest(base) {
@@ -109,6 +113,29 @@ function postExplain(base, body) {
     body,
   });
 }
+
+test("client IP uses forwarded addresses only when proxy trust is enabled", (t) => {
+  const previous = process.env.TRUST_PROXY;
+  t.after(() => {
+    if (previous === undefined) delete process.env.TRUST_PROXY;
+    else process.env.TRUST_PROXY = previous;
+  });
+  const request = {
+    socket: { remoteAddress: "192.0.2.10" },
+    headers: { "x-forwarded-for": "not-an-ip, 198.51.100.12, 203.0.113.1" },
+  };
+  delete process.env.TRUST_PROXY;
+  assert.equal(getClientIp(request), "192.0.2.10");
+  process.env.TRUST_PROXY = "1";
+  assert.equal(getClientIp(request), "198.51.100.12");
+});
+
+test("server request and keep-alive timeouts are configured", () => {
+  const server = createServer({ key: "" });
+  assert.equal(server.requestTimeout, 10_000);
+  assert.equal(server.headersTimeout, 10_000);
+  assert.equal(server.keepAliveTimeout, 5_000);
+});
 
 test("static path traversal, dotfiles, and private project files return 404", async (t) => {
   const publicRoot = await mkdtemp(join(tmpdir(), "dailydebug-public-"));
@@ -208,6 +235,7 @@ test("security headers are present and a configured key never appears in respons
   const response = await requestRaw(base, "/api/config");
   assert.equal(JSON.parse(response.body).explainAvailable, true);
   assertSecurityHeaders(response);
+  assert.equal(response.headers["strict-transport-security"], undefined);
   assert.doesNotMatch(JSON.stringify(response.headers) + response.body, new RegExp(secret));
   const explained = await explainRequest(base);
   assert.equal(explained.status, 200);
@@ -216,7 +244,21 @@ test("security headers are present and a configured key never appears in respons
   assert.doesNotMatch(explained.body + JSON.stringify(explained.headers), new RegExp(secret));
   const missing = await requestRaw(base, "/missing");
   assert.equal(missing.status, 404);
-  assert.ok(missing.headers["content-security-policy"]);
+  assertSecurityHeaders(missing);
+  assert.match(missing.headers["content-type"], /application\/json/);
+});
+
+test("HSTS is present only for forwarded HTTPS requests", async (t) => {
+  const { server, base } = await startServer({ key: "" });
+  t.after(() => stopServer(server));
+  const response = await requestRaw(base, "/api/config", {
+    headers: { "X-Forwarded-Proto": "https" },
+  });
+  assert.equal(response.headers["strict-transport-security"], "max-age=31536000");
+  assert.equal(
+    (await requestRaw(base, "/api/config")).headers["strict-transport-security"],
+    undefined,
+  );
 });
 
 test("local env parser reads the key without requiring a file", async (t) => {
@@ -243,3 +285,29 @@ test("per-client rate limit eventually returns 429", async (t) => {
   }
   assert.equal(responses.at(-1).status, 429);
 });
+
+test("API rate limits distinct forwarded clients only when proxy trust is enabled", async (t) => {
+  const previous = process.env.TRUST_PROXY;
+  t.after(() => {
+    if (previous === undefined) delete process.env.TRUST_PROXY;
+    else process.env.TRUST_PROXY = previous;
+  });
+  process.env.TRUST_PROXY = "1";
+  const { server, base } = await startServer({ key: "" });
+  t.after(() => stopServer(server));
+  for (let attempt = 1; attempt <= 13; attempt += 1) {
+    const response = await explainFromForwardedIp(base, attempt);
+    assert.equal(response.status, 200);
+  }
+});
+
+function explainFromForwardedIp(base, attempt) {
+  return requestRaw(base, "/api/explain", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Forwarded-For": `198.51.100.${attempt}`,
+    },
+    body: JSON.stringify({ id: "y1-bug-range-stop" }),
+  });
+}

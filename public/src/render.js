@@ -46,6 +46,13 @@ export function renderResult(host, score, total, earnedXp, options = {}) {
   host.querySelector("#earned-xp").textContent = xpMessage(earnedXp, options);
 }
 
+/**
+ * Chooses the result message for daily and practice rounds.
+ * @param {number} score
+ * @param {number} total
+ * @param {{ alreadyComplete?: boolean, practice?: boolean }} options
+ * @returns {string}
+ */
 function resultMessage(score, total, { alreadyComplete, practice }) {
   if (practice) return "Practice round complete. Your streak and daily progress are unchanged.";
   if (alreadyComplete)
@@ -55,6 +62,12 @@ function resultMessage(score, total, { alreadyComplete, practice }) {
     : "Nice work showing up. Your next set is ready tomorrow.";
 }
 
+/**
+ * Describes claimed, earned, or unavailable XP on the result screen.
+ * @param {number} earnedXp
+ * @param {{ alreadyComplete?: boolean, practice?: boolean }} options
+ * @returns {string}
+ */
 function xpMessage(earnedXp, { alreadyComplete, practice }) {
   if (practice) return "Practice round · no XP";
   if (alreadyComplete) return "Daily XP already claimed";

@@ -1,6 +1,8 @@
 import { createHash } from "node:crypto";
 import { readFile, realpath } from "node:fs/promises";
 import { extname, isAbsolute, join, relative, resolve, sep } from "node:path";
+import { sendJson } from "./http.js";
+import { STATIC_CACHE_MAX_AGE_SECONDS } from "./constants.js";
 
 const TYPES = Object.freeze({
   ".css": "text/css; charset=utf-8",
@@ -20,33 +22,36 @@ const TYPES = Object.freeze({
 export async function serveStatic(request, response, publicRoot) {
   if (request.method !== "GET" && request.method !== "HEAD") {
     response.setHeader("Allow", "GET, HEAD");
-    sendStaticError(response, 405);
+    sendJson(response, 405, { error: "Method not allowed." });
     return;
   }
   const target = safeTarget(request.url ?? "/", publicRoot);
-  if (!target) return sendStaticError(response, 404);
+  if (!target) return sendJson(response, 404, { error: "Not found." });
   try {
     const root = await realpath(publicRoot);
     const file = await realpath(target);
-    if (!isInside(root, file)) return sendStaticError(response, 404);
+    if (!isInside(root, file)) return sendJson(response, 404, { error: "Not found." });
     await sendStaticFile(request, response, file);
   } catch {
-    sendStaticError(response, 404);
+    sendJson(response, 404, { error: "Not found." });
   }
 }
 
-function sendStaticError(response, status) {
-  response.setHeader("Content-Type", "application/json; charset=utf-8");
-  response
-    .writeHead(status)
-    .end(JSON.stringify({ error: status === 404 ? "Not found." : "Method not allowed." }));
-}
-
+/**
+ * Writes a static asset with its content type and cache validator.
+ * @param {import("node:http").IncomingMessage} request
+ * @param {import("node:http").ServerResponse} response
+ * @param {string} file
+ * @returns {Promise<void>}
+ */
 async function sendStaticFile(request, response, file) {
   const contents = await readFile(file);
   const etag = `"${createHash("sha1").update(contents).digest("hex")}"`;
   response.setHeader("Content-Type", TYPES[extname(file)] ?? "application/octet-stream");
-  response.setHeader("Cache-Control", "public, max-age=0, must-revalidate");
+  response.setHeader(
+    "Cache-Control",
+    `public, max-age=${STATIC_CACHE_MAX_AGE_SECONDS}, must-revalidate`,
+  );
   response.setHeader("ETag", etag);
   if (request.headers["if-none-match"] === etag) return response.writeHead(304).end();
   response.writeHead(200).end(request.method === "HEAD" ? undefined : contents);

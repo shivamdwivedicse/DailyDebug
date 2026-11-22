@@ -71,6 +71,8 @@ The Node server serves files only from `public/`, rejects traversal, encoded tra
 
 The Gemini key lives only in the server's local `.env` file. It is read by `server/env.js`, is never sent to the browser, and is never logged. `.env` is ignored by Git. The browser sends only a question ID and renders explanation text with `textContent`.
 
+When running behind a trusted reverse proxy, set `TRUST_PROXY=1` so the rate limiter can use the first valid address in `X-Forwarded-For`. Leave it unset or set it to `0` when clients connect directly; forwarded headers are ignored unless explicitly trusted.
+
 ## Accessibility
 
 The UI provides a skip link, semantic landmarks, one main heading, labeled year selection and radio answers, visible focus, screen-reader live feedback, and focus movement to screen headings and answer feedback. Keys 1–4 select an answer; Enter checks or advances. Feedback includes text and a symbol rather than relying on color alone. The palette's foreground/background pairs are checked against WCAG AA contrast thresholds in a test. Dark color-scheme and reduced-motion preferences are supported. Controls have at least 44 CSS-pixel touch targets, and the layout adapts to narrow screens and zoom.
@@ -89,7 +91,7 @@ Optional Gemini setup: copy `.env.example` to `.env` and set `GEMINI_API_KEY` in
 npm start
 ```
 
-Open `http://127.0.0.1:3000`. The server binds to loopback by default; `PORT` can select another local port.
+Open `http://127.0.0.1:3000` locally. `PORT` selects the listen port, `HOST` can override the default `0.0.0.0` bind address, and `TRUST_PROXY=1` enables trusted `X-Forwarded-For` handling when deployed behind a proxy.
 
 ## Tests and quality checks
 

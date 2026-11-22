@@ -1,0 +1,16 @@
+export const DEFAULT_PORT = 3_000;
+export const REQUEST_TIMEOUT_MS = 10_000;
+export const HEADERS_TIMEOUT_MS = 10_000;
+export const KEEP_ALIVE_TIMEOUT_MS = 5_000;
+export const RATE_LIMIT_WINDOW_MS = 60_000;
+export const RATE_LIMIT_MAX_REQUESTS = 12;
+export const RATE_LIMIT_MAX_CLIENTS = 5_000;
+export const MAX_BODY_BYTES = 1_024;
+export const MAX_QUESTION_ID_LENGTH = 40;
+export const GEMINI_MODEL = "gemini-2.0-flash";
+export const GEMINI_TIMEOUT_MS = 8_000;
+export const GEMINI_MAX_OUTPUT_TOKENS = 180;
+export const GEMINI_TEMPERATURE = 0.3;
+export const MAX_EXPLANATION_CHARS = 1_000;
+export const HSTS_MAX_AGE_SECONDS = 31_536_000;
+export const STATIC_CACHE_MAX_AGE_SECONDS = 0;
