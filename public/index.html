@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A five-question daily learning game for engineering students."
+    />
+    <title>DailyDebug — one small win a day</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="DailyDebug home">Daily<span>Debug</span></a>
+      <div class="top-stats" aria-label="Your progress">
+        <span class="streak-pill" aria-label="Current streak">
+          <span aria-hidden="true">🔥</span> <span id="streak-count">0</span> day streak
+        </span>
+        <div class="xp-wrap">
+          <span class="xp-label"
+            ><span aria-hidden="true">✦</span> <span id="xp-count">0</span> XP</span
+          >
+          <progress
+            id="xp-progress"
+            max="100"
+            value="0"
+            aria-label="Progress to next level"
+          ></progress>
+        </div>
+      </div>
+    </header>
+    <main id="main">
+      <section id="home-screen" class="screen home-screen" aria-labelledby="home-heading">
+        <div class="home-copy">
+          <p class="eyebrow">YOUR DAILY DEBUG</p>
+          <h1 id="home-heading" tabindex="-1">Small steps.<br />Big brain energy.</h1>
+          <p class="lead">
+            Five quick questions to keep your engineering instincts sharp. No cram session required.
+          </p>
+          <label class="year-label" for="year-choice">Choose your year</label>
+          <select id="year-choice" class="year-select">
+            <option value="1">Year 1 · Foundations</option>
+            <option value="2">Year 2 · Core skills</option>
+            <option value="3">Year 3 · Systems &amp; smarts</option>
+            <option value="4">Year 4 · Design &amp; interviews</option>
+          </select>
+          <button id="start-button" class="button button-primary">
+            Start today’s 5 <span aria-hidden="true">→</span>
+          </button>
+        </div>
+        <div class="mascot-panel mascot-idle" id="home-mascot">
+          <img class="mascot-art" src="/assets/bugsy.svg" alt="" aria-hidden="true" />
+          <p class="speech">Bugsy saved a tiny challenge just for you.</p>
+        </div>
+        <p class="home-note">
+          <span aria-hidden="true">✓</span> Just five questions. Learn one “why” at a time.
+        </p>
+      </section>
+
+      <section id="play-screen" class="screen play-screen is-hidden" aria-labelledby="play-heading">
+        <div class="play-topline">
+          <h2 id="play-heading" tabindex="-1">Today’s challenge</h2>
+          <p id="daily-progress-label" class="eyebrow">Question 1 of 5</p>
+        </div>
+        <progress
+          id="daily-progress"
+          max="5"
+          value="0"
+          aria-label="Daily challenge progress"
+        ></progress>
+        <div class="play-layout">
+          <article class="question-card">
+            <form id="answer-form">
+              <div id="question-content"></div>
+              <p class="keyboard-hint">Tip: press 1–4 to choose, then Enter to check.</p>
+              <div class="question-actions">
+                <button id="check-button" class="button button-primary" type="submit">
+                  Check answer
+                </button>
+                <button id="explain-button" class="button button-secondary" type="button">
+                  Explain more
+                </button>
+              </div>
+            </form>
+            <button id="next-button" class="button button-primary" type="button" disabled>
+              Next question
+            </button>
+            <p id="feedback" class="feedback" tabindex="-1" aria-live="polite"></p>
+            <p id="explanation" class="explanation" aria-live="polite"></p>
+          </article>
+          <aside id="play-mascot" class="mascot-panel mascot-idle" aria-label="Challenge guide">
+            <img class="mascot-art" src="/assets/bugsy.svg" alt="" aria-hidden="true" />
+            <p class="speech">Let’s debug this together!</p>
+          </aside>
+        </div>
+      </section>
+
+      <section
+        id="result-screen"
+        class="screen result-screen is-hidden"
+        aria-labelledby="result-heading"
+      >
+        <div id="confetti" class="confetti" aria-hidden="true">
+          <span>✦</span><span>✳</span><span>•</span><span>✦</span><span>✳</span>
+        </div>
+        <div class="result-card">
+          <div id="result-mascot" class="mascot-panel mascot-celebrate">
+            <img class="mascot-art" src="/assets/byte.svg" alt="" aria-hidden="true" />
+            <p class="speech">You showed up. That’s a win!</p>
+          </div>
+          <p id="result-eyebrow" class="eyebrow">DAILY DEBUG COMPLETE</p>
+          <h2 id="result-heading" tabindex="-1">You did the thing!</h2>
+          <p id="result-score" class="result-score">0/5</p>
+          <p id="result-message" class="lead">A little practice goes a long way.</p>
+          <p id="earned-xp" class="earned-xp">+0 XP earned</p>
+          <div class="result-actions">
+            <button id="share-button" class="button button-secondary" type="button">
+              Share result
+            </button>
+            <button id="practice-button" class="button button-secondary" type="button">
+              Practice more
+            </button>
+            <button id="home-button" class="button button-primary" type="button">Back home</button>
+          </div>
+          <p id="share-status" class="feedback" aria-live="polite"></p>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      DailyDebug <span aria-hidden="true">·</span> Built for curious minds.
+    </footer>
+  </body>
+</html>

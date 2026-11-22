@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" role="img">
+  <title>Bugsy, a friendly bug</title>
+  <path fill="#f6ca45" stroke="#18304b" stroke-width="8" d="M75 48 53 24m92 24 22-24M57 89 26 76m137 13 31-13M60 138l-30 20m130-20 30 20"/>
+  <path fill="#74c69d" stroke="#18304b" stroke-width="8" d="M55 108a55 55 0 1 1 110 0v42a55 55 0 0 1-110 0z"/>
+  <path fill="#ff8d78" stroke="#18304b" stroke-width="7" d="M70 97a12 12 0 1 1-24 0 12 12 0 0 1 24 0m104 0a12 12 0 1 1-24 0 12 12 0 0 1 24 0"/>
+  <path fill="#fff" stroke="#18304b" stroke-width="6" d="M79 78a17 20 0 1 1 34 0 17 20 0 0 1-34 0m43 0a17 20 0 1 1 34 0 17 20 0 0 1-34 0"/>
+  <circle cx="97" cy="80" r="6" fill="#18304b"/><circle cx="140" cy="80" r="6" fill="#18304b"/>
+  <path fill="none" stroke="#18304b" stroke-linecap="round" stroke-width="6" d="M91 125q19 20 38 0"/>
+  <path fill="#54a86e" d="M108 116h8v37h-8z"/>
+</svg>

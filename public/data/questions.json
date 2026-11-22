@@ -1,0 +1,1478 @@
+[
+  {
+    "id": "y1-bug-range-stop",
+    "year": 1,
+    "mode": "Bug Hunt",
+    "topic": "Python basics",
+    "prompt": "This loop should print 1, 2, 3. What needs fixing?",
+    "code": "for n in range(1, 3):\n    print(n)",
+    "options": [
+      "Change the stop value to 4",
+      "Change the start value to 0",
+      "Replace range with len"
+    ],
+    "answerIndex": 0,
+    "explanation": "The stop value of range is excluded, so range(1, 4) visits 1, 2, and 3."
+  },
+  {
+    "id": "y1-bug-list-index",
+    "year": 1,
+    "mode": "Bug Hunt",
+    "topic": "Python lists",
+    "prompt": "Why does this try to read past the final item?",
+    "code": "values = [4, 8, 12]\nfor i in range(len(values) + 1):\n    print(values[i])",
+    "options": ["The loop has one extra index", "Lists start at index 1", "print changes the list"],
+    "answerIndex": 0,
+    "explanation": "Valid indexes are 0 through len(values)-1. Use range(len(values)) or iterate over values."
+  },
+  {
+    "id": "y1-bug-equality",
+    "year": 1,
+    "mode": "Bug Hunt",
+    "topic": "Python basics",
+    "prompt": "The program should test whether x equals 5. Which operator belongs here?",
+    "code": "x = 5\nif x = 5:\n    print('yes')",
+    "options": ["==", "!=", ":="],
+    "answerIndex": 0,
+    "explanation": "A condition compares values with ==. A single = assigns a value and is not a valid if condition."
+  },
+  {
+    "id": "y1-bug-integer-division",
+    "year": 1,
+    "mode": "Bug Hunt",
+    "topic": "Python arithmetic",
+    "prompt": "The intended average should be 2.5. What is the smallest correction?",
+    "code": "total = 5\ncount = 2\naverage = total // count",
+    "options": ["Use / instead of //", "Use % instead of //", "Convert count to a string"],
+    "answerIndex": 0,
+    "explanation": "// performs floor division and returns 2 here. / performs true division and returns 2.5."
+  },
+  {
+    "id": "y1-bug-slope-sign",
+    "year": 1,
+    "mode": "Bug Hunt",
+    "topic": "Mathematics",
+    "prompt": "A line through (1, 2) and (3, 6) has slope 2. What is wrong with this calculation?",
+    "code": "slope = (6 - 2) / (1 - 3)",
+    "options": [
+      "The x-coordinate difference is reversed",
+      "The y-coordinate difference is reversed",
+      "Slope uses multiplication"
+    ],
+    "answerIndex": 0,
+    "explanation": "Keep the coordinate order consistent: (6-2)/(3-1) = 2."
+  },
+  {
+    "id": "y1-bug-speed-units",
+    "year": 1,
+    "mode": "Bug Hunt",
+    "topic": "Physics",
+    "prompt": "A car travels 100 metres in 5 seconds. Which correction gives speed in m/s?",
+    "code": "speed = 100 * 5",
+    "options": [
+      "Divide distance by time",
+      "Subtract time from distance",
+      "Convert metres to kilograms"
+    ],
+    "answerIndex": 0,
+    "explanation": "Speed is distance divided by elapsed time, so 100/5 = 20 m/s."
+  },
+  {
+    "id": "y1-bug-ohm-law",
+    "year": 1,
+    "mode": "Bug Hunt",
+    "topic": "Basic electronics",
+    "prompt": "A 12 V supply across 4 ohms should produce 3 A. What is wrong?",
+    "code": "current = 12 * 4",
+    "options": [
+      "Use voltage divided by resistance",
+      "Use resistance divided by voltage",
+      "Current is measured in ohms"
+    ],
+    "answerIndex": 0,
+    "explanation": "Ohm's law gives I = V/R, so 12/4 = 3 amperes."
+  },
+  {
+    "id": "y1-bug-python-indent",
+    "year": 1,
+    "mode": "Bug Hunt",
+    "topic": "Python basics",
+    "prompt": "The message should print when score is above 0. What needs fixing?",
+    "code": "score = 2\nif score > 0:\nprint('positive')",
+    "options": ["Indent the print line", "Add a semicolon after if", "Replace > with ="],
+    "answerIndex": 0,
+    "explanation": "Python uses indentation to mark the body of an if statement."
+  },
+  {
+    "id": "y1-bug-series-resistors",
+    "year": 1,
+    "mode": "Bug Hunt",
+    "topic": "Basic electronics",
+    "prompt": "Two 2-ohm resistors are in series. Which expression gives their total resistance?",
+    "code": "total = 2 * 2",
+    "options": [
+      "Add the resistances",
+      "Divide one by the other",
+      "Use only the smaller resistance"
+    ],
+    "answerIndex": 0,
+    "explanation": "Series resistances add: 2 + 2 = 4 ohms."
+  },
+  {
+    "id": "y1-bug-pythagorean",
+    "year": 1,
+    "mode": "Bug Hunt",
+    "topic": "Mathematics",
+    "prompt": "For a right triangle with legs a and b, which expression gives the hypotenuse?",
+    "code": "c = a + b",
+    "options": ["sqrt(a*a + b*b)", "a*a + b*b", "sqrt(a + b)"],
+    "answerIndex": 0,
+    "explanation": "The Pythagorean theorem is c²=a²+b², so take the square root of the sum of squares."
+  },
+  {
+    "id": "y1-predict-range",
+    "year": 1,
+    "mode": "Predict the Output",
+    "topic": "Python basics",
+    "prompt": "What does this loop print?",
+    "code": "for n in range(2, 5):\n    print(n)",
+    "options": ["2 then 3 then 4", "2 then 3 then 4 then 5", "3 then 4 then 5"],
+    "answerIndex": 0,
+    "expectedOutput": "2\n3\n4",
+    "explanation": "range includes its start and stops before its end, so the printed values are 2, 3, and 4."
+  },
+  {
+    "id": "y1-predict-remainder",
+    "year": 1,
+    "mode": "Predict the Output",
+    "topic": "Python arithmetic",
+    "prompt": "What is printed?",
+    "code": "print(17 % 5)",
+    "options": ["2", "3", "12"],
+    "answerIndex": 0,
+    "expectedOutput": "2",
+    "explanation": "The modulo operator returns the remainder. Seventeen divided by five leaves remainder two."
+  },
+  {
+    "id": "y1-predict-list-slice",
+    "year": 1,
+    "mode": "Predict the Output",
+    "topic": "Python lists",
+    "prompt": "What does this slice print?",
+    "code": "values = [3, 6, 9, 12]\nprint(values[1:3])",
+    "options": ["[6, 9]", "[3, 6, 9]", "[6, 9, 12]"],
+    "answerIndex": 0,
+    "expectedOutput": "[6, 9]",
+    "explanation": "A slice includes index 1 and excludes index 3."
+  },
+  {
+    "id": "y1-predict-string",
+    "year": 1,
+    "mode": "Predict the Output",
+    "topic": "Python strings",
+    "prompt": "What is printed after the two strings are joined?",
+    "code": "word = 'debug'\nprint(word[:2] + word[-1])",
+    "options": ["deg", "d g", "debug"],
+    "answerIndex": 0,
+    "expectedOutput": "deg",
+    "explanation": "word[:2] is 'de' and word[-1] is 'g', so the result is 'deg'."
+  },
+  {
+    "id": "y1-predict-sum",
+    "year": 1,
+    "mode": "Predict the Output",
+    "topic": "Python basics",
+    "prompt": "What value is printed?",
+    "code": "total = 0\nfor value in [2, 4, 6]:\n    total += value\nprint(total)",
+    "options": ["12", "10", "6"],
+    "answerIndex": 0,
+    "expectedOutput": "12",
+    "explanation": "The loop adds 2, 4, and 6 to total, producing 12."
+  },
+  {
+    "id": "y1-predict-true-division",
+    "year": 1,
+    "mode": "Predict the Output",
+    "topic": "Python arithmetic",
+    "prompt": "What does Python print?",
+    "code": "print(7 / 2)",
+    "options": ["3.5", "3", "4"],
+    "answerIndex": 0,
+    "expectedOutput": "3.5",
+    "explanation": "The / operator performs true division, even when both operands are integers."
+  },
+  {
+    "id": "y1-predict-boolean",
+    "year": 1,
+    "mode": "Predict the Output",
+    "topic": "Python logic",
+    "prompt": "What is the output?",
+    "code": "x = 4\nprint(x > 2 and x < 5)",
+    "options": ["True", "False", "4"],
+    "answerIndex": 0,
+    "expectedOutput": "True",
+    "explanation": "Both comparisons are true for x=4, so their logical and is True."
+  },
+  {
+    "id": "y1-predict-round",
+    "year": 1,
+    "mode": "Predict the Output",
+    "topic": "Python arithmetic",
+    "prompt": "What is displayed?",
+    "code": "print(round(2.6))",
+    "options": ["3", "2.6", "2"],
+    "answerIndex": 0,
+    "expectedOutput": "3",
+    "explanation": "Rounding 2.6 to zero decimal places gives 3."
+  },
+  {
+    "id": "y1-predict-dictionary",
+    "year": 1,
+    "mode": "Predict the Output",
+    "topic": "Python dictionaries",
+    "prompt": "What value is looked up by the key Lin?",
+    "code": "marks = {'Ada': 8, 'Lin': 9}\nprint(marks['Lin'])",
+    "options": ["9", "8", "Lin"],
+    "answerIndex": 0,
+    "expectedOutput": "9",
+    "explanation": "The key 'Lin' maps to the value 9."
+  },
+  {
+    "id": "y1-predict-while",
+    "year": 1,
+    "mode": "Predict the Output",
+    "topic": "Python loops",
+    "prompt": "What number is printed last?",
+    "code": "n = 1\nwhile n < 8:\n    n *= 2\nprint(n)",
+    "options": ["8", "4", "16"],
+    "answerIndex": 0,
+    "expectedOutput": "8",
+    "explanation": "n progresses from 1 to 2 to 4 to 8, where the loop condition becomes false."
+  },
+  {
+    "id": "y1-concept-variable",
+    "year": 1,
+    "mode": "Quick Concept",
+    "topic": "Programming basics",
+    "prompt": "What is a variable in a program?",
+    "options": [
+      "A named place to refer to a value",
+      "A type of computer cable",
+      "A command that always repeats"
+    ],
+    "answerIndex": 0,
+    "explanation": "A variable is a name that lets a program store or refer to a value."
+  },
+  {
+    "id": "y1-concept-mean",
+    "year": 1,
+    "mode": "Quick Concept",
+    "topic": "Mathematics",
+    "prompt": "How do you calculate the arithmetic mean of n values?",
+    "options": [
+      "Add them and divide by n",
+      "Multiply them and divide by n",
+      "Subtract the smallest from the largest"
+    ],
+    "answerIndex": 0,
+    "explanation": "The mean is the sum of all values divided by how many values there are."
+  },
+  {
+    "id": "y1-concept-newton",
+    "year": 1,
+    "mode": "Quick Concept",
+    "topic": "Physics",
+    "prompt": "Which statement is Newton's second law?",
+    "options": [
+      "Net force equals mass times acceleration",
+      "Every force has a matching opposite force",
+      "An object always moves in a circle"
+    ],
+    "answerIndex": 0,
+    "explanation": "Newton's second law is F = ma: net force equals mass times acceleration."
+  },
+  {
+    "id": "y1-concept-voltage",
+    "year": 1,
+    "mode": "Quick Concept",
+    "topic": "Basic electronics",
+    "prompt": "Voltage is best described as what?",
+    "options": [
+      "Electric potential difference",
+      "Rate of electric charge flow",
+      "Opposition to current"
+    ],
+    "answerIndex": 0,
+    "explanation": "Voltage is electric potential difference, measured in volts."
+  },
+  {
+    "id": "y1-concept-python-list",
+    "year": 1,
+    "mode": "Quick Concept",
+    "topic": "Python lists",
+    "prompt": "What does a Python list let you do?",
+    "options": [
+      "Store an ordered collection of values",
+      "Store only one immutable number",
+      "Automatically sort every value"
+    ],
+    "answerIndex": 0,
+    "explanation": "A list stores an ordered, mutable sequence and can hold multiple values."
+  },
+  {
+    "id": "y1-concept-frequency",
+    "year": 1,
+    "mode": "Quick Concept",
+    "topic": "Physics",
+    "prompt": "What is the unit of frequency?",
+    "options": ["Hertz", "Ohm", "Newton"],
+    "answerIndex": 0,
+    "explanation": "Frequency is measured in hertz, meaning cycles per second."
+  },
+  {
+    "id": "y1-concept-series",
+    "year": 1,
+    "mode": "Quick Concept",
+    "topic": "Basic electronics",
+    "prompt": "In a simple series circuit, which quantity is the same through each component?",
+    "options": ["Current", "Voltage", "Resistance"],
+    "answerIndex": 0,
+    "explanation": "A series path has one route for charge, so the current is the same through each component."
+  },
+  {
+    "id": "y1-concept-sine",
+    "year": 1,
+    "mode": "Quick Concept",
+    "topic": "Mathematics",
+    "prompt": "For an angle in a right triangle, sine is which ratio?",
+    "options": [
+      "Opposite side over hypotenuse",
+      "Adjacent side over hypotenuse",
+      "Opposite side over adjacent side"
+    ],
+    "answerIndex": 0,
+    "explanation": "SOH-CAH-TOA: sine equals the opposite side divided by the hypotenuse."
+  },
+  {
+    "id": "y1-concept-function",
+    "year": 1,
+    "mode": "Quick Concept",
+    "topic": "Programming basics",
+    "prompt": "What is a function mainly used for?",
+    "options": [
+      "Packaging reusable steps behind a name",
+      "Making every value global",
+      "Preventing a program from returning values"
+    ],
+    "answerIndex": 0,
+    "explanation": "A function groups reusable work and can accept inputs and return a result."
+  },
+  {
+    "id": "y1-concept-capacitor",
+    "year": 1,
+    "mode": "Quick Concept",
+    "topic": "Basic electronics",
+    "prompt": "What does an ideal capacitor store?",
+    "options": [
+      "Energy in an electric field",
+      "Energy in a magnetic field only",
+      "Permanent electric current"
+    ],
+    "answerIndex": 0,
+    "explanation": "A capacitor stores energy in the electric field between its conductive plates."
+  },
+  {
+    "id": "y2-bug-binary-bound",
+    "year": 2,
+    "mode": "Bug Hunt",
+    "topic": "Algorithms",
+    "prompt": "This binary search should inspect every index including the right bound. What is wrong?",
+    "code": "left, right = 0, len(items) - 1\nwhile left < right:\n    mid = (left + right) // 2\n    # inspect items[mid]",
+    "options": ["Use left <= right", "Set right to len(items)", "Use mid = left + right"],
+    "answerIndex": 0,
+    "explanation": "When left equals right, one candidate index remains. The loop must continue while left <= right."
+  },
+  {
+    "id": "y2-bug-stack-pop",
+    "year": 2,
+    "mode": "Bug Hunt",
+    "topic": "Data structures",
+    "prompt": "A stack should remove its top item. What should this code use?",
+    "code": "stack = [2, 5, 7]\nitem = stack.pop(0)",
+    "options": ["pop() with no index", "append()", "sort()"],
+    "answerIndex": 0,
+    "explanation": "A stack is last-in, first-out, so pop() removes the final list element."
+  },
+  {
+    "id": "y2-bug-sql-filter",
+    "year": 2,
+    "mode": "Bug Hunt",
+    "topic": "DBMS",
+    "prompt": "The query should keep rows with age greater than 18. Which clause is missing?",
+    "options": ["WHERE before age", "ORDER BY before age", "GROUP BY before age"],
+    "answerIndex": 0,
+    "explanation": "A row filter belongs in a WHERE clause: WHERE age > 18."
+  },
+  {
+    "id": "y2-bug-queue",
+    "year": 2,
+    "mode": "Bug Hunt",
+    "topic": "Data structures",
+    "prompt": "This list should act as a FIFO queue. What should removal use?",
+    "code": "queue = [\"first\", \"second\"]\nnext_item = queue.pop()",
+    "options": ["pop(0)", "appendleft()", "sort()"],
+    "answerIndex": 0,
+    "explanation": "FIFO removes the earliest enqueued item, which is at index zero in this list representation."
+  },
+  {
+    "id": "y2-bug-set-duplicate",
+    "year": 2,
+    "mode": "Bug Hunt",
+    "topic": "Algorithms",
+    "prompt": "The code should count distinct values. What needs changing?",
+    "code": "values = [1, 1, 2, 3]\ndistinct_count = len(values)",
+    "options": ["Count len(set(values))", "Count sum(values)", "Count max(values)"],
+    "answerIndex": 0,
+    "explanation": "A set keeps one copy of each value, so len(set(values)) is the distinct count."
+  },
+  {
+    "id": "y2-bug-join-key",
+    "year": 2,
+    "mode": "Bug Hunt",
+    "topic": "DBMS",
+    "prompt": "A student can have one department. Which column should reference the department table?",
+    "options": [
+      "dept_id should be a foreign key",
+      "id should be a second primary key",
+      "dept_id should be a text index only"
+    ],
+    "answerIndex": 0,
+    "explanation": "A foreign key on dept_id can enforce that each referenced department exists."
+  },
+  {
+    "id": "y2-bug-xor",
+    "year": 2,
+    "mode": "Bug Hunt",
+    "topic": "Digital logic",
+    "prompt": "This should implement XOR: output is 1 when inputs differ. Which expression is correct?",
+    "code": "out = A and B",
+    "options": ["(A and not B) or (not A and B)", "A or B", "A and B"],
+    "answerIndex": 0,
+    "explanation": "XOR is true for exactly the two cases where one input is true and the other is false."
+  },
+  {
+    "id": "y2-bug-bubble-loop",
+    "year": 2,
+    "mode": "Bug Hunt",
+    "topic": "Algorithms",
+    "prompt": "A bubble-sort pass compares neighboring items. What is wrong with the loop bound?",
+    "code": "for i in range(len(values)):\n    if values[i] > values[i + 1]:\n        values[i], values[i + 1] = values[i + 1], values[i]",
+    "options": [
+      "The final i makes i+1 out of range",
+      "The comparison must use < always",
+      "Python cannot swap values"
+    ],
+    "answerIndex": 0,
+    "explanation": "The final valid neighbor pair starts at len(values)-2, so the loop must stop before len(values)-1."
+  },
+  {
+    "id": "y2-bug-sql-null",
+    "year": 2,
+    "mode": "Bug Hunt",
+    "topic": "DBMS",
+    "prompt": "Which condition correctly finds rows with no assigned mentor?",
+    "options": ["Use mentor IS NULL", "Use mentor == NULL", "Use mentor EQUALS NULL"],
+    "answerIndex": 0,
+    "explanation": "SQL uses IS NULL to test missing values because NULL represents unknown, not an ordinary value."
+  },
+  {
+    "id": "y2-bug-flip-flop",
+    "year": 2,
+    "mode": "Bug Hunt",
+    "topic": "Digital logic",
+    "prompt": "A D flip-flop stores its input on which event?",
+    "options": [
+      "The active clock edge",
+      "Every time its output changes",
+      "Only when power is removed"
+    ],
+    "answerIndex": 0,
+    "explanation": "An edge-triggered D flip-flop samples D at its specified active clock edge."
+  },
+  {
+    "id": "y2-predict-stack",
+    "year": 2,
+    "mode": "Predict the Output",
+    "topic": "Data structures",
+    "prompt": "What does the stack print after one pop?",
+    "code": "stack = [3, 6, 9]\nstack.pop()\nprint(stack)",
+    "options": ["[3, 6]", "[6, 9]", "[3, 6, 9]"],
+    "answerIndex": 0,
+    "expectedOutput": "[3, 6]",
+    "explanation": "Python list pop() removes and returns the last element, 9."
+  },
+  {
+    "id": "y2-predict-sort",
+    "year": 2,
+    "mode": "Predict the Output",
+    "topic": "Algorithms",
+    "prompt": "What is printed after sorting?",
+    "code": "values = [4, 1, 3]\nvalues.sort()\nprint(values)",
+    "options": ["[1, 3, 4]", "[4, 3, 1]", "None"],
+    "answerIndex": 0,
+    "expectedOutput": "[1, 3, 4]",
+    "explanation": "sort() changes the list in ascending order in place."
+  },
+  {
+    "id": "y2-predict-dict-count",
+    "year": 2,
+    "mode": "Predict the Output",
+    "topic": "Data structures",
+    "prompt": "What count is printed?",
+    "code": "counts = {}\nfor key in ['a', 'b', 'a']:\n    counts[key] = counts.get(key, 0) + 1\nprint(counts['a'])",
+    "options": ["2", "1", "3"],
+    "answerIndex": 0,
+    "expectedOutput": "2",
+    "explanation": "The key 'a' occurs twice, and each occurrence increments its count."
+  },
+  {
+    "id": "y2-predict-binary-mid",
+    "year": 2,
+    "mode": "Predict the Output",
+    "topic": "Algorithms",
+    "prompt": "What midpoint index is printed?",
+    "code": "left, right = 0, 6\nprint((left + right) // 2)",
+    "options": ["3", "2", "4"],
+    "answerIndex": 0,
+    "expectedOutput": "3",
+    "explanation": "Integer division of (0+6) by 2 gives midpoint index 3."
+  },
+  {
+    "id": "y2-predict-set",
+    "year": 2,
+    "mode": "Predict the Output",
+    "topic": "Data structures",
+    "prompt": "What is the size of this set?",
+    "code": "values = {2, 2, 5, 7}\nprint(len(values))",
+    "options": ["3", "4", "2"],
+    "answerIndex": 0,
+    "expectedOutput": "3",
+    "explanation": "Sets contain unique values, so the repeated 2 is stored only once."
+  },
+  {
+    "id": "y2-predict-sql-like",
+    "year": 2,
+    "mode": "Predict the Output",
+    "topic": "DBMS",
+    "prompt": "How many matching strings are counted?",
+    "code": "names = ['Mira', 'Milo', 'Tara']\nprint(sum(name.startswith('Mi') for name in names))",
+    "options": ["2", "1", "3"],
+    "answerIndex": 0,
+    "expectedOutput": "2",
+    "explanation": "Both Mira and Milo start with 'Mi', while Tara does not."
+  },
+  {
+    "id": "y2-predict-bitwise",
+    "year": 2,
+    "mode": "Predict the Output",
+    "topic": "Digital logic",
+    "prompt": "What is the result of this bitwise AND?",
+    "code": "print(6 & 3)",
+    "options": ["2", "7", "5"],
+    "answerIndex": 0,
+    "expectedOutput": "2",
+    "explanation": "In binary, 6 is 110 and 3 is 011; their AND is 010, which is 2."
+  },
+  {
+    "id": "y2-predict-queue",
+    "year": 2,
+    "mode": "Predict the Output",
+    "topic": "Data structures",
+    "prompt": "Which item is printed first?",
+    "code": "queue = ['A', 'B', 'C']\nprint(queue.pop(0))",
+    "options": ["A", "B", "C"],
+    "answerIndex": 0,
+    "expectedOutput": "A",
+    "explanation": "Index zero is the front of this list-based FIFO queue."
+  },
+  {
+    "id": "y2-predict-recursion",
+    "year": 2,
+    "mode": "Predict the Output",
+    "topic": "Algorithms",
+    "prompt": "What value does this function print?",
+    "code": "def total(n):\n    return 0 if n == 0 else n + total(n - 1)\nprint(total(3))",
+    "options": ["6", "3", "9"],
+    "answerIndex": 0,
+    "expectedOutput": "6",
+    "explanation": "The recursive sum is 3 + 2 + 1 + 0 = 6."
+  },
+  {
+    "id": "y2-predict-logic",
+    "year": 2,
+    "mode": "Predict the Output",
+    "topic": "Digital logic",
+    "prompt": "What does this Boolean expression print?",
+    "code": "A, B = True, False\nprint(A != B)",
+    "options": ["True", "False", "None"],
+    "answerIndex": 0,
+    "expectedOutput": "True",
+    "explanation": "The inputs differ, so inequality is true; for Boolean inputs that is XOR."
+  },
+  {
+    "id": "y2-concept-big-o",
+    "year": 2,
+    "mode": "Quick Concept",
+    "topic": "Algorithms",
+    "prompt": "What does O(n) describe for an algorithm?",
+    "options": [
+      "A growth rate proportional to input size",
+      "Exactly n seconds of runtime",
+      "The memory address of item n"
+    ],
+    "answerIndex": 0,
+    "explanation": "Big-O describes how resource use grows as input size grows, abstracting away constants."
+  },
+  {
+    "id": "y2-concept-hash",
+    "year": 2,
+    "mode": "Quick Concept",
+    "topic": "Data structures",
+    "prompt": "What is a typical average-case lookup time in a hash table?",
+    "options": ["O(1)", "O(n log n)", "O(2^n)"],
+    "answerIndex": 0,
+    "explanation": "A well-behaved hash table usually finds a key in constant expected time, though worst cases can be slower."
+  },
+  {
+    "id": "y2-concept-primary-key",
+    "year": 2,
+    "mode": "Quick Concept",
+    "topic": "DBMS",
+    "prompt": "What does a primary key guarantee for a table row?",
+    "options": [
+      "A unique, non-null identifier",
+      "That every column is text",
+      "That rows are physically sorted"
+    ],
+    "answerIndex": 0,
+    "explanation": "A primary key uniquely identifies each row and cannot be NULL."
+  },
+  {
+    "id": "y2-concept-normalization",
+    "year": 2,
+    "mode": "Quick Concept",
+    "topic": "DBMS",
+    "prompt": "Why normalize relational tables?",
+    "options": [
+      "Reduce redundant data and update anomalies",
+      "Make every query use more joins",
+      "Store all values in one column"
+    ],
+    "answerIndex": 0,
+    "explanation": "Normalization organizes related facts to reduce duplication and inconsistent updates."
+  },
+  {
+    "id": "y2-concept-xor",
+    "year": 2,
+    "mode": "Quick Concept",
+    "topic": "Digital logic",
+    "prompt": "When is the output of a two-input XOR gate 1?",
+    "options": ["When exactly one input is 1", "When both inputs are 1", "When both inputs are 0"],
+    "answerIndex": 0,
+    "explanation": "XOR is true when the inputs differ."
+  },
+  {
+    "id": "y2-concept-queue",
+    "year": 2,
+    "mode": "Quick Concept",
+    "topic": "Data structures",
+    "prompt": "Which rule does a queue follow?",
+    "options": ["First in, first out", "Last in, first out", "Largest item first"],
+    "answerIndex": 0,
+    "explanation": "A FIFO queue removes items in the order they were added."
+  },
+  {
+    "id": "y2-concept-btree",
+    "year": 2,
+    "mode": "Quick Concept",
+    "topic": "DBMS",
+    "prompt": "Why can a database use a B-tree index?",
+    "options": [
+      "To find ordered keys with fewer page reads",
+      "To encrypt every table row",
+      "To prevent all duplicate values"
+    ],
+    "answerIndex": 0,
+    "explanation": "B-tree indexes keep keys ordered and balanced, helping searches and range scans avoid reading every row."
+  },
+  {
+    "id": "y2-concept-flipflop",
+    "year": 2,
+    "mode": "Quick Concept",
+    "topic": "Digital logic",
+    "prompt": "How many stable states can a basic flip-flop represent?",
+    "options": ["Two", "One", "Eight"],
+    "answerIndex": 0,
+    "explanation": "A flip-flop stores one binary bit, with two stable states: 0 and 1."
+  },
+  {
+    "id": "y2-concept-stable-sort",
+    "year": 2,
+    "mode": "Quick Concept",
+    "topic": "Algorithms",
+    "prompt": "What does it mean for a sort to be stable?",
+    "options": [
+      "Equal-key items keep their original relative order",
+      "The data never changes",
+      "It always runs in O(1)"
+    ],
+    "answerIndex": 0,
+    "explanation": "A stable sort preserves the original relative order of records whose keys compare equal."
+  },
+  {
+    "id": "y2-concept-foreign-key",
+    "year": 2,
+    "mode": "Quick Concept",
+    "topic": "DBMS",
+    "prompt": "What does a foreign key usually enforce?",
+    "options": [
+      "A reference to a valid row in another table",
+      "A unique value in every column",
+      "A fixed disk location"
+    ],
+    "answerIndex": 0,
+    "explanation": "A foreign key enforces referential integrity by requiring referenced rows to exist."
+  },
+  {
+    "id": "y3-bug-process-copy",
+    "year": 3,
+    "mode": "Bug Hunt",
+    "topic": "Operating systems",
+    "prompt": "A child process should receive a copy of the parent's address space at creation. Which OS operation is commonly used?",
+    "options": ["fork", "bind", "compile"],
+    "answerIndex": 0,
+    "explanation": "On Unix-like systems, fork creates a child process with a logically copied address space, commonly implemented with copy-on-write."
+  },
+  {
+    "id": "y3-bug-deadlock-order",
+    "year": 3,
+    "mode": "Bug Hunt",
+    "topic": "Operating systems",
+    "prompt": "Two threads lock A then B in one path, and B then A in another. What risk does this create?",
+    "options": ["Deadlock from circular wait", "A guaranteed cache hit", "A DNS lookup failure"],
+    "answerIndex": 0,
+    "explanation": "Opposite lock ordering can let each thread hold one lock while waiting for the other, forming a deadlock."
+  },
+  {
+    "id": "y3-bug-tcp-udp",
+    "year": 3,
+    "mode": "Bug Hunt",
+    "topic": "Networks",
+    "prompt": "A file transfer requires reliable, ordered delivery. Which transport is the usual fit?",
+    "options": ["TCP", "UDP", "ARP"],
+    "answerIndex": 0,
+    "explanation": "TCP provides a reliable, ordered byte stream; UDP does not guarantee delivery or ordering."
+  },
+  {
+    "id": "y3-bug-train-test",
+    "year": 3,
+    "mode": "Bug Hunt",
+    "topic": "Machine learning",
+    "prompt": "A model is evaluated repeatedly on the test set while tuning hyperparameters. What is the main problem?",
+    "options": [
+      "Information from the test set leaks into model selection",
+      "The training set becomes larger",
+      "The labels are automatically encrypted"
+    ],
+    "answerIndex": 0,
+    "explanation": "Repeated tuning against test results overfits decisions to the test set; use validation data for tuning and reserve test data for final evaluation."
+  },
+  {
+    "id": "y3-bug-subnet",
+    "year": 3,
+    "mode": "Bug Hunt",
+    "topic": "Networks",
+    "prompt": "A host needs to send a packet outside its local subnet. Where does it normally send the frame first?",
+    "options": [
+      "Its configured default gateway",
+      "A random host on the subnet",
+      "The DNS server in every case"
+    ],
+    "answerIndex": 0,
+    "explanation": "The host sends the Ethernet frame to its default gateway, which routes the IP packet onward."
+  },
+  {
+    "id": "y3-bug-page-fault",
+    "year": 3,
+    "mode": "Bug Hunt",
+    "topic": "Operating systems",
+    "prompt": "A process accesses a virtual page not currently in RAM. What does the hardware typically raise?",
+    "options": ["A page fault", "A checksum success", "A TCP handshake"],
+    "answerIndex": 0,
+    "explanation": "A page fault traps to the operating system so it can map or load the needed virtual-memory page."
+  },
+  {
+    "id": "y3-bug-precision-recall",
+    "year": 3,
+    "mode": "Bug Hunt",
+    "topic": "Machine learning",
+    "prompt": "For a rare disease screening model, missing a positive case is costly. Which metric is especially important?",
+    "options": ["Recall", "Training accuracy only", "Number of model parameters"],
+    "answerIndex": 0,
+    "explanation": "Recall measures the fraction of actual positives found, so it directly reflects missed positive cases."
+  },
+  {
+    "id": "y3-bug-dns-purpose",
+    "year": 3,
+    "mode": "Bug Hunt",
+    "topic": "Networks",
+    "prompt": "A browser needs an IP address for a domain name. Which service is designed to resolve it?",
+    "options": ["DNS", "DHCP", "NTP"],
+    "answerIndex": 0,
+    "explanation": "DNS maps domain names to records such as IP addresses."
+  },
+  {
+    "id": "y3-bug-context-switch",
+    "year": 3,
+    "mode": "Bug Hunt",
+    "topic": "Operating systems",
+    "prompt": "What must the OS save when switching a CPU from one process to another?",
+    "options": [
+      "The outgoing process execution context",
+      "The screen brightness only",
+      "The entire hard drive"
+    ],
+    "answerIndex": 0,
+    "explanation": "The OS saves registers and other execution state so the process can resume later."
+  },
+  {
+    "id": "y3-bug-overfit",
+    "year": 3,
+    "mode": "Bug Hunt",
+    "topic": "Machine learning",
+    "prompt": "A model gets near-perfect training accuracy but performs poorly on unseen data. What is the likely issue?",
+    "options": ["Overfitting", "Underflow in every input", "A balanced test set"],
+    "answerIndex": 0,
+    "explanation": "Overfitting means the model learned training-specific details that do not generalize well."
+  },
+  {
+    "id": "y3-predict-range-step",
+    "year": 3,
+    "mode": "Predict the Output",
+    "topic": "Python basics",
+    "prompt": "What list is printed?",
+    "code": "print(list(range(1, 8, 3)))",
+    "options": ["[1, 4, 7]", "[1, 4, 7, 10]", "[3, 6]"],
+    "answerIndex": 0,
+    "expectedOutput": "[1, 4, 7]",
+    "explanation": "The range starts at 1, adds 3 each time, and stops before 8."
+  },
+  {
+    "id": "y3-predict-mean",
+    "year": 3,
+    "mode": "Predict the Output",
+    "topic": "Machine learning",
+    "prompt": "What is the mean of these values?",
+    "code": "values = [2, 4, 6, 8]\nprint(sum(values) / len(values))",
+    "options": ["5.0", "4.0", "20"],
+    "answerIndex": 0,
+    "expectedOutput": "5.0",
+    "explanation": "The sum is 20 and there are 4 values, giving a mean of 5.0."
+  },
+  {
+    "id": "y3-predict-dict",
+    "year": 3,
+    "mode": "Predict the Output",
+    "topic": "Python basics",
+    "prompt": "What does this dictionary update print?",
+    "code": "counts = {'ok': 1}\ncounts['ok'] += 2\nprint(counts['ok'])",
+    "options": ["3", "2", "1"],
+    "answerIndex": 0,
+    "expectedOutput": "3",
+    "explanation": "The existing value 1 is incremented by 2."
+  },
+  {
+    "id": "y3-predict-set-intersection",
+    "year": 3,
+    "mode": "Predict the Output",
+    "topic": "Python basics",
+    "prompt": "What elements are in the intersection?",
+    "code": "left = {1, 2, 3}\nright = {2, 3, 4}\nprint(sorted(left & right))",
+    "options": ["[2, 3]", "[1, 2, 3, 4]", "[1, 4]"],
+    "answerIndex": 0,
+    "expectedOutput": "[2, 3]",
+    "explanation": "Set intersection keeps elements that occur in both sets: 2 and 3."
+  },
+  {
+    "id": "y3-predict-function",
+    "year": 3,
+    "mode": "Predict the Output",
+    "topic": "Python functions",
+    "prompt": "What does the function return and print?",
+    "code": "def scale(value, factor=2):\n    return value * factor\nprint(scale(3))",
+    "options": ["6", "5", "3"],
+    "answerIndex": 0,
+    "expectedOutput": "6",
+    "explanation": "The omitted factor uses its default value 2, so 3*2 is 6."
+  },
+  {
+    "id": "y3-predict-slice-reverse",
+    "year": 3,
+    "mode": "Predict the Output",
+    "topic": "Python lists",
+    "prompt": "What does this reverse slice print?",
+    "code": "print([1, 2, 3][::-1])",
+    "options": ["[3, 2, 1]", "[1, 2, 3]", "[2, 1]"],
+    "answerIndex": 0,
+    "expectedOutput": "[3, 2, 1]",
+    "explanation": "A slice step of -1 traverses the list from the end to the start."
+  },
+  {
+    "id": "y3-predict-confusion",
+    "year": 3,
+    "mode": "Predict the Output",
+    "topic": "Machine learning",
+    "prompt": "What is the diagonal sum of this confusion matrix?",
+    "code": "matrix = [[8, 2], [1, 9]]\nprint(matrix[0][0] + matrix[1][1])",
+    "options": ["17", "10", "20"],
+    "answerIndex": 0,
+    "expectedOutput": "17",
+    "explanation": "The diagonal entries are 8 and 9; their sum is 17."
+  },
+  {
+    "id": "y3-predict-enumerate",
+    "year": 3,
+    "mode": "Predict the Output",
+    "topic": "Python basics",
+    "prompt": "What is printed for the first enumerated pair?",
+    "code": "items = ['x', 'y']\nprint(list(enumerate(items, start=1))[0])",
+    "options": ["(1, 'x')", "(0, 'x')", "('x', 1)"],
+    "answerIndex": 0,
+    "expectedOutput": "(1, 'x')",
+    "explanation": "enumerate starts at 1 here and pairs that index with the first item, 'x'."
+  },
+  {
+    "id": "y3-predict-f1",
+    "year": 3,
+    "mode": "Predict the Output",
+    "topic": "Machine learning",
+    "prompt": "What is the F1 score for precision 1 and recall 1?",
+    "code": "p, r = 1.0, 1.0\nprint(2 * p * r / (p + r))",
+    "options": ["1.0", "2.0", "0.5"],
+    "answerIndex": 0,
+    "expectedOutput": "1.0",
+    "explanation": "The harmonic mean 2pr/(p+r) equals 1 when both precision and recall are 1."
+  },
+  {
+    "id": "y3-predict-comprehension",
+    "year": 3,
+    "mode": "Predict the Output",
+    "topic": "Python basics",
+    "prompt": "What values does the comprehension produce?",
+    "code": "print([n * n for n in range(4) if n % 2 == 0])",
+    "options": ["[0, 4]", "[0, 1, 4, 9]", "[1, 9]"],
+    "answerIndex": 0,
+    "expectedOutput": "[0, 4]",
+    "explanation": "The even values from range(4) are 0 and 2, whose squares are 0 and 4."
+  },
+  {
+    "id": "y3-concept-virtual-memory",
+    "year": 3,
+    "mode": "Quick Concept",
+    "topic": "Operating systems",
+    "prompt": "What does virtual memory give each process?",
+    "options": [
+      "A private virtual address space abstraction",
+      "A guaranteed dedicated CPU core",
+      "A permanent network connection"
+    ],
+    "answerIndex": 0,
+    "explanation": "Virtual memory gives a process its own address-space view, mapped by the OS and hardware to physical memory."
+  },
+  {
+    "id": "y3-concept-deadlock",
+    "year": 3,
+    "mode": "Quick Concept",
+    "topic": "Operating systems",
+    "prompt": "Which condition is necessary for deadlock?",
+    "options": ["Circular wait", "A fast processor", "A page cache"],
+    "answerIndex": 0,
+    "explanation": "Circular wait is one of the four Coffman conditions associated with deadlock."
+  },
+  {
+    "id": "y3-concept-tcp",
+    "year": 3,
+    "mode": "Quick Concept",
+    "topic": "Networks",
+    "prompt": "What does TCP provide to applications?",
+    "options": [
+      "A reliable, ordered byte stream",
+      "Guaranteed fixed latency",
+      "A mapping from names to IP addresses"
+    ],
+    "answerIndex": 0,
+    "explanation": "TCP provides reliable, ordered delivery of a byte stream, but does not guarantee fixed latency."
+  },
+  {
+    "id": "y3-concept-http",
+    "year": 3,
+    "mode": "Quick Concept",
+    "topic": "Networks",
+    "prompt": "What is an HTTP status code in the 2xx class generally for?",
+    "options": ["Successful requests", "Client-side errors", "Server-side errors"],
+    "answerIndex": 0,
+    "explanation": "The 2xx status class indicates that a request was successfully received, understood, and handled."
+  },
+  {
+    "id": "y3-concept-overfitting",
+    "year": 3,
+    "mode": "Quick Concept",
+    "topic": "Machine learning",
+    "prompt": "What is a common sign of overfitting?",
+    "options": [
+      "Training performance is much better than validation performance",
+      "Training and validation data are identical",
+      "The model has zero parameters"
+    ],
+    "answerIndex": 0,
+    "explanation": "A large generalization gap often indicates the model has fit training details too closely."
+  },
+  {
+    "id": "y3-concept-gradient",
+    "year": 3,
+    "mode": "Quick Concept",
+    "topic": "Machine learning",
+    "prompt": "What does gradient descent do during model training?",
+    "options": [
+      "Updates parameters to reduce a loss function",
+      "Sorts labels alphabetically",
+      "Guarantees perfect test accuracy"
+    ],
+    "answerIndex": 0,
+    "explanation": "Gradient descent steps parameters in a direction that locally reduces the objective or loss."
+  },
+  {
+    "id": "y3-concept-dhcp",
+    "year": 3,
+    "mode": "Quick Concept",
+    "topic": "Networks",
+    "prompt": "What does DHCP commonly provide to a host?",
+    "options": [
+      "Network configuration such as an IP address",
+      "A web page's HTML",
+      "A CPU scheduling quantum"
+    ],
+    "answerIndex": 0,
+    "explanation": "DHCP can lease an IP address and provide settings such as a subnet mask and default gateway."
+  },
+  {
+    "id": "y3-concept-scheduler",
+    "year": 3,
+    "mode": "Quick Concept",
+    "topic": "Operating systems",
+    "prompt": "What is a CPU scheduler's central job?",
+    "options": [
+      "Choose which runnable task uses the CPU next",
+      "Translate every domain name",
+      "Compress process memory"
+    ],
+    "answerIndex": 0,
+    "explanation": "The scheduler selects among runnable tasks according to the operating system's scheduling policy."
+  },
+  {
+    "id": "y3-concept-regularization",
+    "year": 3,
+    "mode": "Quick Concept",
+    "topic": "Machine learning",
+    "prompt": "Why add regularization to a model objective?",
+    "options": [
+      "Discourage overly complex parameter choices",
+      "Increase the number of labels",
+      "Remove the need for validation"
+    ],
+    "answerIndex": 0,
+    "explanation": "Regularization penalizes certain complex solutions and can improve generalization."
+  },
+  {
+    "id": "y3-concept-cache",
+    "year": 3,
+    "mode": "Quick Concept",
+    "topic": "Operating systems",
+    "prompt": "Why is a CPU cache useful?",
+    "options": [
+      "It keeps likely-needed data close to the processor",
+      "It stores every file permanently",
+      "It guarantees every memory access is a hit"
+    ],
+    "answerIndex": 0,
+    "explanation": "Caches exploit locality to reduce average access time, but a cache miss is still possible."
+  },
+  {
+    "id": "y4-bug-cache-key",
+    "year": 4,
+    "mode": "Bug Hunt",
+    "topic": "System design",
+    "prompt": "A cache stores a user's profile by user ID. What should a read-through cache do on a miss?",
+    "options": [
+      "Load from the source, then populate the cache",
+      "Return another user's profile",
+      "Delete the source database"
+    ],
+    "answerIndex": 0,
+    "explanation": "On a read-through miss, fetch the value from the source of truth, cache it, and return it."
+  },
+  {
+    "id": "y4-bug-load-balancer",
+    "year": 4,
+    "mode": "Bug Hunt",
+    "topic": "System design",
+    "prompt": "A service has several healthy stateless instances. What can distribute incoming requests?",
+    "options": ["A load balancer", "A compiler", "A local mutex"],
+    "answerIndex": 0,
+    "explanation": "A load balancer routes requests across healthy service instances."
+  },
+  {
+    "id": "y4-bug-idempotency",
+    "year": 4,
+    "mode": "Bug Hunt",
+    "topic": "System design",
+    "prompt": "A payment request may be retried after a network timeout. What helps avoid charging twice?",
+    "options": [
+      "An idempotency key checked by the service",
+      "A shorter variable name",
+      "Randomly choosing a database"
+    ],
+    "answerIndex": 0,
+    "explanation": "A unique idempotency key lets the service recognize retries and return the original result rather than repeat the side effect."
+  },
+  {
+    "id": "y4-bug-binary-search",
+    "year": 4,
+    "mode": "Bug Hunt",
+    "topic": "Interview patterns",
+    "prompt": "A sorted array is searched by halving the remaining interval each step. What is its time complexity?",
+    "options": ["O(log n)", "O(n)", "O(n squared)"],
+    "answerIndex": 0,
+    "explanation": "Each step halves the search interval, so the number of steps grows logarithmically."
+  },
+  {
+    "id": "y4-bug-pagination",
+    "year": 4,
+    "mode": "Bug Hunt",
+    "topic": "System design",
+    "prompt": "A feed uses a huge offset for every page and slows down as users scroll. What is a common alternative?",
+    "options": ["Cursor-based pagination", "Reload every row from scratch", "Use a global lock"],
+    "answerIndex": 0,
+    "explanation": "Cursor pagination continues from an ordered key rather than skipping a growing offset, often improving deep-page performance."
+  },
+  {
+    "id": "y4-bug-replication",
+    "year": 4,
+    "mode": "Bug Hunt",
+    "topic": "System design",
+    "prompt": "A replicated database acknowledges a write before replicas catch up. What can a read from a lagging replica show?",
+    "options": ["A stale value", "A guaranteed newest value", "A compiler error"],
+    "answerIndex": 0,
+    "explanation": "Asynchronous replication can leave a replica temporarily behind the primary, so reads may be stale."
+  },
+  {
+    "id": "y4-bug-two-pointers",
+    "year": 4,
+    "mode": "Bug Hunt",
+    "topic": "Interview patterns",
+    "prompt": "For a sorted array, which pattern can find a pair summing to a target in O(n) time?",
+    "options": [
+      "Two pointers moving inward",
+      "Checking every pair with nested loops",
+      "Sorting the array repeatedly"
+    ],
+    "answerIndex": 0,
+    "explanation": "Starting at both ends and moving one pointer based on the sum checks at most n positions after sorting."
+  },
+  {
+    "id": "y4-bug-api-timeout",
+    "year": 4,
+    "mode": "Bug Hunt",
+    "topic": "System design",
+    "prompt": "A service calls a slow downstream dependency. What prevents each request from waiting forever?",
+    "options": ["A bounded timeout", "An infinite retry loop", "A larger response body"],
+    "answerIndex": 0,
+    "explanation": "A bounded timeout limits resource occupancy and allows the caller to handle a dependency that is not responding."
+  },
+  {
+    "id": "y4-bug-database-index",
+    "year": 4,
+    "mode": "Bug Hunt",
+    "topic": "System design",
+    "prompt": "A frequent query filters by an unindexed column in a large table. What is a likely database operation?",
+    "options": [
+      "A scan of many or all rows",
+      "A constant-time lookup is guaranteed",
+      "A DNS cache refresh"
+    ],
+    "answerIndex": 0,
+    "explanation": "Without a useful index, the database may need to examine many rows to evaluate the filter."
+  },
+  {
+    "id": "y4-bug-test-complexity",
+    "year": 4,
+    "mode": "Bug Hunt",
+    "topic": "Interview patterns",
+    "prompt": "An algorithm has two nested loops each over n items. What is its typical time complexity?",
+    "options": ["O(n squared)", "O(log n)", "O(1)"],
+    "answerIndex": 0,
+    "explanation": "The inner loop performs about n operations for each of n outer iterations, for roughly n squared work."
+  },
+  {
+    "id": "y4-predict-binary",
+    "year": 4,
+    "mode": "Predict the Output",
+    "topic": "Interview patterns",
+    "prompt": "What position is returned for target 7?",
+    "code": "values = [1, 3, 5, 7, 9]\nprint(values.index(7))",
+    "options": ["3", "4", "2"],
+    "answerIndex": 0,
+    "expectedOutput": "3",
+    "explanation": "Python lists use zero-based indexes, so 7 is at position 3."
+  },
+  {
+    "id": "y4-predict-two-sum",
+    "year": 4,
+    "mode": "Predict the Output",
+    "topic": "Interview patterns",
+    "prompt": "What pair of indexes is printed?",
+    "code": "values = [2, 7, 11, 15]\ntarget = 9\nprint((0, 1) if values[0] + values[1] == target else None)",
+    "options": ["(0, 1)", "(1, 2)", "None"],
+    "answerIndex": 0,
+    "expectedOutput": "(0, 1)",
+    "explanation": "The values at indexes 0 and 1 sum to 2+7=9."
+  },
+  {
+    "id": "y4-predict-lru-order",
+    "year": 4,
+    "mode": "Predict the Output",
+    "topic": "Python basics",
+    "prompt": "What is printed after the append?",
+    "code": "items = ['a', 'b']\nitems.append('c')\nprint(items[-1])",
+    "options": ["c", "b", "a"],
+    "answerIndex": 0,
+    "expectedOutput": "c",
+    "explanation": "append adds the new item at the end, which is also index -1."
+  },
+  {
+    "id": "y4-predict-deduplicate",
+    "year": 4,
+    "mode": "Predict the Output",
+    "topic": "Interview patterns",
+    "prompt": "What unique values are printed in sorted order?",
+    "code": "values = [4, 2, 4, 1]\nprint(sorted(set(values)))",
+    "options": ["[1, 2, 4]", "[4, 2, 4, 1]", "[1, 2, 4, 4]"],
+    "answerIndex": 0,
+    "expectedOutput": "[1, 2, 4]",
+    "explanation": "set removes duplicates and sorted returns the remaining values in ascending order."
+  },
+  {
+    "id": "y4-predict-retry",
+    "year": 4,
+    "mode": "Predict the Output",
+    "topic": "Python basics",
+    "prompt": "How many times does the loop body run?",
+    "code": "attempts = 0\nfor _ in range(3):\n    attempts += 1\nprint(attempts)",
+    "options": ["3", "2", "4"],
+    "answerIndex": 0,
+    "expectedOutput": "3",
+    "explanation": "range(3) produces three iterations: 0, 1, and 2."
+  },
+  {
+    "id": "y4-predict-hash",
+    "year": 4,
+    "mode": "Predict the Output",
+    "topic": "Python basics",
+    "prompt": "What does this membership check print?",
+    "code": "cache = {'user-1': 'Ada'}\nprint('user-1' in cache)",
+    "options": ["True", "False", "Ada"],
+    "answerIndex": 0,
+    "expectedOutput": "True",
+    "explanation": "The in operator on a dictionary checks whether the key exists."
+  },
+  {
+    "id": "y4-predict-latency",
+    "year": 4,
+    "mode": "Predict the Output",
+    "topic": "System design",
+    "prompt": "What is the average of these request times?",
+    "code": "times = [10, 20, 30]\nprint(sum(times) // len(times))",
+    "options": ["20", "30", "10"],
+    "answerIndex": 0,
+    "expectedOutput": "20",
+    "explanation": "The total is 60 and integer division by three gives 20."
+  },
+  {
+    "id": "y4-predict-dict-default",
+    "year": 4,
+    "mode": "Predict the Output",
+    "topic": "Python basics",
+    "prompt": "What fallback value is printed for a missing key?",
+    "code": "cache = {}\nprint(cache.get('x', 'miss'))",
+    "options": ["miss", "None", "x"],
+    "answerIndex": 0,
+    "expectedOutput": "miss",
+    "explanation": "dict.get returns its supplied default when the key is absent."
+  },
+  {
+    "id": "y4-predict-sort-key",
+    "year": 4,
+    "mode": "Predict the Output",
+    "topic": "Interview patterns",
+    "prompt": "Which value appears first after sorting by length?",
+    "code": "words = ['pear', 'fig', 'plum']\nprint(sorted(words, key=len)[0])",
+    "options": ["fig", "pear", "plum"],
+    "answerIndex": 0,
+    "expectedOutput": "fig",
+    "explanation": "fig has length 3, shorter than pear and plum, so it sorts first."
+  },
+  {
+    "id": "y4-predict-prefix",
+    "year": 4,
+    "mode": "Predict the Output",
+    "topic": "Python basics",
+    "prompt": "What prefix length is printed?",
+    "code": "text = 'system-design'\nprint(len(text.split('-')[0]))",
+    "options": ["6", "7", "13"],
+    "answerIndex": 0,
+    "expectedOutput": "6",
+    "explanation": "Splitting at the hyphen gives 'system' as the first part, which has six characters."
+  },
+  {
+    "id": "y4-concept-capacity",
+    "year": 4,
+    "mode": "Quick Concept",
+    "topic": "System design",
+    "prompt": "What does horizontal scaling usually mean?",
+    "options": [
+      "Adding more service instances or machines",
+      "Giving one machine more memory only",
+      "Deleting replicas"
+    ],
+    "answerIndex": 0,
+    "explanation": "Horizontal scaling adds more machines or instances to share the workload."
+  },
+  {
+    "id": "y4-concept-cache-ttl",
+    "year": 4,
+    "mode": "Quick Concept",
+    "topic": "System design",
+    "prompt": "What is a cache TTL commonly used for?",
+    "options": [
+      "Limit how long a cached item remains fresh",
+      "Guarantee zero network latency",
+      "Encrypt the cache key"
+    ],
+    "answerIndex": 0,
+    "explanation": "A time-to-live bounds the age of an entry before it expires or is refreshed."
+  },
+  {
+    "id": "y4-concept-consistency",
+    "year": 4,
+    "mode": "Quick Concept",
+    "topic": "System design",
+    "prompt": "In a replicated system, what does eventual consistency allow?",
+    "options": [
+      "Replicas may temporarily differ but converge if updates stop",
+      "Every read always sees the latest write",
+      "Writes never reach replicas"
+    ],
+    "answerIndex": 0,
+    "explanation": "Eventual consistency permits temporary replica differences while promising convergence under suitable conditions."
+  },
+  {
+    "id": "y4-concept-load-balancer",
+    "year": 4,
+    "mode": "Quick Concept",
+    "topic": "System design",
+    "prompt": "What is a health check used for by a load balancer?",
+    "options": [
+      "Avoid routing traffic to an unhealthy instance",
+      "Choose the user's password",
+      "Compress every request"
+    ],
+    "answerIndex": 0,
+    "explanation": "Health checks help a load balancer detect unavailable instances and stop sending them traffic."
+  },
+  {
+    "id": "y4-concept-complexity",
+    "year": 4,
+    "mode": "Quick Concept",
+    "topic": "Interview patterns",
+    "prompt": "What is the extra space complexity of an in-place array reversal?",
+    "options": ["O(1) auxiliary space", "O(n squared) space", "O(log n) output"],
+    "answerIndex": 0,
+    "explanation": "An in-place reversal swaps elements using a fixed number of temporary variables."
+  },
+  {
+    "id": "y4-concept-availability",
+    "year": 4,
+    "mode": "Quick Concept",
+    "topic": "System design",
+    "prompt": "What does availability describe?",
+    "options": [
+      "Whether a system is ready to serve requests when needed",
+      "How many bytes each request contains",
+      "The order of source code functions"
+    ],
+    "answerIndex": 0,
+    "explanation": "Availability is the ability of a service to respond and remain usable over time."
+  },
+  {
+    "id": "y4-concept-idempotent",
+    "year": 4,
+    "mode": "Quick Concept",
+    "topic": "System design",
+    "prompt": "What does an idempotent operation mean?",
+    "options": [
+      "Repeating it has the same effect as doing it once",
+      "It always takes exactly one millisecond",
+      "It cannot return an error"
+    ],
+    "answerIndex": 0,
+    "explanation": "An operation is idempotent when repeated application has the same effect as a single application."
+  },
+  {
+    "id": "y4-concept-index",
+    "year": 4,
+    "mode": "Quick Concept",
+    "topic": "System design",
+    "prompt": "What is a common tradeoff of adding a database index?",
+    "options": [
+      "Faster reads but extra storage and write work",
+      "Slower reads and no storage use",
+      "Automatic data encryption"
+    ],
+    "answerIndex": 0,
+    "explanation": "Indexes can speed up reads but consume storage and need maintenance as data changes."
+  },
+  {
+    "id": "y4-concept-queue-pattern",
+    "year": 4,
+    "mode": "Quick Concept",
+    "topic": "Interview patterns",
+    "prompt": "Which data structure is a natural fit for breadth-first search?",
+    "options": ["Queue", "Stack only", "Hash function"],
+    "answerIndex": 0,
+    "explanation": "BFS explores nodes in increasing distance order, using a queue to process the frontier."
+  },
+  {
+    "id": "y4-concept-retry-backoff",
+    "year": 4,
+    "mode": "Quick Concept",
+    "topic": "System design",
+    "prompt": "Why use exponential backoff when retrying a failing service?",
+    "options": [
+      "Space retries out to reduce pressure during an outage",
+      "Make every retry happen faster",
+      "Guarantee a request succeeds"
+    ],
+    "answerIndex": 0,
+    "explanation": "Increasing the wait between retries reduces synchronized load on an already struggling service."
+  }
+]
