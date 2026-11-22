@@ -42,7 +42,8 @@ function loadQuestions() {
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const server = createServer();
-  server.listen(Number(process.env.PORT) || DEFAULT_PORT, "127.0.0.1", () => {
-    console.log("DailyDebug is ready at http://127.0.0.1:3000");
+  const port = Number(process.env.PORT) || DEFAULT_PORT;
+  server.listen(port, process.env.HOST || "0.0.0.0", () => {
+    console.log(`DailyDebug is ready on port ${port}`);
   });
 }
